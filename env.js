@@ -37,8 +37,8 @@ require('dotenv').config({
 const BUNDLE_ID = 'com.onboard'; // ios bundle id
 const PACKAGE = 'com.onboard'; // android package name
 const NAME = 'onboard'; // app name
-const EXPO_ACCOUNT_OWNER = 'expo-owner'; // expo account owner
-const EAS_PROJECT_ID = 'c3e1075b-6fe7-4686-aa49-35b46a229044'; // eas project id
+const EXPO_ACCOUNT_OWNER = 'rishabkhivsara'; // expo account owner
+const EAS_PROJECT_ID = 'af83baf3-6759-41f2-8f1c-30f6e6e2082c'; // eas project id
 const SCHEME = 'onboard'; // app scheme
 
 /**
