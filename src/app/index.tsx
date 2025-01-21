@@ -1,9 +1,7 @@
-import * as React from 'react';
 import { Redirect } from 'expo-router';
+import * as React from 'react';
 
-type Props = {};
-
-const Index = ({}: Props) => {
+const Index = () => {
   return <Redirect href="/signup" />;
 };
 
