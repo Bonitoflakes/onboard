@@ -54,14 +54,15 @@ export default function Signup() {
   return (
     <>
       {/* <FocusAwareStatusBar style="dark" /> */}
-      <SafeAreaView className="grow">
-        <KeyboardAwareScrollView
-          bottomOffset={62}
-          contentContainerClassName="grow"
-        >
-          <LinearGradient
-            colors={['#DFE8FF', '#FFFFFF']}
-            className="flex-1 grow z-[-2]"
+      <LinearGradient
+        colors={['#DFE8FF', '#FFFFFF',]}
+        // className="z-[-2]"
+        style={{ flex: 1, flexGrow: 1 }}
+      >
+        <SafeAreaView className="grow ">
+          <KeyboardAwareScrollView
+            bottomOffset={62}
+            contentContainerClassName="grow"
           >
             <View className="grow m-4 z-10">
               <View className="flex-row gap-2">
@@ -174,11 +175,16 @@ export default function Signup() {
             </View>
             {/* @TODO: Need better solution */}
             <Hashtag className="absolute bottom-0 right-0" />
-          </LinearGradient>
-        </KeyboardAwareScrollView>
-      </SafeAreaView>
+          </KeyboardAwareScrollView>
+        </SafeAreaView>
+      </LinearGradient>
 
-      <StatusBar backgroundColor="#DFE8FF" />
+      <StatusBar
+        // backgroundColor="#DFE8FF"
+        animated
+        style="dark"
+        // translucent={true}
+      />
     </>
   );
 }

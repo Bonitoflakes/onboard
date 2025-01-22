@@ -5,6 +5,7 @@ import type { LoginFormProps } from '@/components/login-form';
 import { LoginForm } from '@/components/login-form';
 import { FocusAwareStatusBar } from '@/components/ui';
 import { useAuth } from '@/lib';
+import { StatusBar } from 'expo-status-bar';
 
 export default function Login() {
   const router = useRouter();
@@ -17,7 +18,11 @@ export default function Login() {
   };
   return (
     <>
-      <FocusAwareStatusBar />
+      <StatusBar
+        // backgroundColor="white"
+        animated
+        style="dark"
+      />
       <LoginForm onSubmit={onSubmit} />
     </>
   );
