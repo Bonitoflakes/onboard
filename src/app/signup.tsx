@@ -1,12 +1,17 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from 'expo-router';
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { Pressable, Text, View } from 'react-native';
+import { Controller, useForm } from 'react-hook-form';
+import {
+  ImageBackground,
+  Pressable,
+  TextInput as RNTextInput,
+  View,
+} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import * as z from 'zod';
 
-import { ControlledInput, FocusAwareStatusBar } from '@/components/ui';
+import { ControlledInput, FocusAwareStatusBar, Text } from '@/components/ui';
+import * as React from 'react';
 
 const schema = z.object({
   firstName: z
@@ -40,94 +45,116 @@ export default function Signup() {
     console.log(data);
   };
 
+  const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
+
   return (
     <>
-      <FocusAwareStatusBar />
-      <KeyboardAwareScrollView style={{ flex: 1 }} bottomOffset={62}>
-        <View className="m-4">
-          <View>
-            <Text className="text-2xl font-bold text-black">
-              Welcome <Text className="text-blue-600">Onboard!</Text>
-            </Text>
-            <Text className="mt-1 text-sm text-gray-500">
-              Enter your details below to continue
-            </Text>
+      <FocusAwareStatusBar style="dark" />
+      <KeyboardAwareScrollView
+        bottomOffset={62}
+        contentContainerClassName="grow"
+      >
+        {/* <ImageBackground source={image}> */}
+        <View className="grow m-4">
+          <View className="flex-row gap-2">
+            <Text className="text-[32px] font-bold text-black">Welcome</Text>
+            <Text className="text-[32px] font-bold text-primary">Onboard!</Text>
           </View>
 
-          {/* First Name */}
-          <View className="mt-6">
-            <ControlledInput
-              name="firstName"
-              control={control}
-              placeholder="Enter your first name"
-              label="Enter your first name"
-            />
-          </View>
+          <View className="grow justify-between">
+            <View className="">
+              {/* First Name */}
+              <View className="mt-4">
+                <ControlledInput
+                  name="firstName"
+                  control={control}
+                  placeholder="Enter your first name"
+                  label="Enter your first name"
+                />
+              </View>
 
-          {/* Last Name */}
-          <View className="mt-4">
-            <ControlledInput
-              name="lastName"
-              control={control}
-              placeholder="Enter your last name"
-              label="Enter your last name"
-            />
-          </View>
+              {/* Last Name */}
+              <View className="mt-4">
+                <ControlledInput
+                  name="lastName"
+                  control={control}
+                  placeholder="Enter your last name"
+                  label="Enter your last name"
+                />
+              </View>
 
-          {/* Email */}
-          <View className="mt-4">
-            <ControlledInput
-              name="email"
-              control={control}
-              placeholder="Enter your mail id"
-              label="Enter your mail id"
-              keyboardType="email-address"
-            />
-            <Text className="mt-1 text-xs text-gray-400">
-              we will send you the 4 digit verification code
-            </Text>
-          </View>
+              {/* Email */}
+              <View className="mt-4">
+                <Text className="text-[#161616] text-base font-medium ">
+                  Enter your mail id
+                </Text>
+                <Text className="mt-2 text-xs font-medium text-[#5A5A5A]">
+                  we will send you the 4 digit verification code
+                </Text>
+                <Controller
+                  control={control}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <RNTextInput
+                      placeholder="Enter your mail id"
+                      onBlur={onBlur}
+                      onChangeText={onChange}
+                      value={value}
+                      className="mt-2 h-12 rounded-md border-[0.5px] border-neutral-300 bg-white px-4 py-3 font-inter text-base  font-semibold leading-5"
+                      keyboardType="email-address"
+                    />
+                  )}
+                  name="email"
+                />
+              </View>
 
-          {/* Phone Number */}
-          <View className="mt-4">
-            <ControlledInput
-              name="phone"
-              control={control}
-              placeholder="9876543210"
-              label="Enter your phone number"
-              keyboardType="numeric"
-            />
-          </View>
+              {/* Phone Number */}
+              <View className="mt-4">
+                <ControlledInput
+                  name="phone"
+                  control={control}
+                  placeholder="9876543210"
+                  label="Enter your phone number"
+                  keyboardType="numeric"
+                />
+              </View>
+            </View>
 
-          {/* Submit Button */}
-          <Pressable
-            onPress={handleSubmit(onSubmit)}
-            className="mt-6 rounded-lg bg-blue-600 py-3"
-          >
-            <Text className="text-center font-medium text-white">Send OTP</Text>
-          </Pressable>
-
-          {/* Footer */}
-          <View className="mt-6">
-            <Text className="text-center text-sm text-gray-500">
-              If you already have an account?
-              <Link
-                className="font-medium text-blue-600"
-                href={{ pathname: '/login' }}
-                // href="/"
+            {/* Footer */}
+            <View className="mt-6">
+              {/* Submit Button */}
+              <Pressable
+                onPress={handleSubmit(onSubmit)}
+                className="mt-6 rounded-md h-[60px] bg-primary flex items-center justify-center "
               >
-                login
-              </Link>
-            </Text>
-            <Text className="mt-2 text-center text-xs text-gray-400">
-              You agree to the
-              <Text className="text-blue-600 underline">
-                terms & Conditions
+                <Text className="text-center font-semibold text-lg text-white">
+                  Send OTP
+                </Text>
+              </Pressable>
+
+              <Text className="mt-2 text-center text-[#161616] text-sm font-medium">
+                If you already have an account ?
+                <Link
+                  className="font-medium text-primary"
+                  href={{ pathname: '/login' }}
+                >
+                  &nbsp;Login
+                </Link>
               </Text>
-              &<Text className="text-blue-600 underline">privacy policy</Text>
-            </Text>
+
+              <View className="mt-6 flex-row items-center justify-center gap-1">
+                <Text className="text-center text-xs">You agree to the</Text>
+                <Text className="text-primary text-center text-xs ">
+                  Terms & Conditions
+                </Text>
+                <Text className="text-black text-center text-xs ">&</Text>
+                <Text className="text-primary text-center text-xs ">
+                  Privacy policy
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
+        {/* </ImageBackground> */}
       </KeyboardAwareScrollView>
     </>
   );
