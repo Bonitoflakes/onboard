@@ -108,6 +108,7 @@ export default function Signup() {
                       render={({ field: { onChange, onBlur, value } }) => (
                         <RNTextInput
                           placeholder="Enter your mail id"
+                          placeholderClassName="#A3A3A3"
                           onBlur={onBlur}
                           onChangeText={onChange}
                           value={value}
@@ -171,6 +172,7 @@ export default function Signup() {
                 </View>
               </View>
             </View>
+            {/* @TODO: Need better solution */}
             <Hashtag className="absolute bottom-0 right-0" />
           </LinearGradient>
         </KeyboardAwareScrollView>
