@@ -66,6 +66,24 @@
         "APP_ENV": "development",
         "EXPO_NO_DOTENV": "1"
       }
+    },
+    "preview": {
+      "developmentClient": false,
+      "channel": "preview",
+      "distribution": "internal",
+      "pnpm": "9.12.3",
+      "ios": {
+        "image": "latest"
+      },
+      "android": {
+        "buildType": "apk",
+        "image": "latest"
+      },
+      "env": {
+        "APP_ENV": "staging",
+        "EXPO_NO_DOTENV": "1",
+        "FLIPPER_DISABLE": "1"
+      }
     }
   },
   "submit": {
