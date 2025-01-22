@@ -14,6 +14,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { APIProvider } from '@/api';
 import { hydrateAuth, loadSelectedTheme } from '@/lib';
 import { useThemeConfig } from '@/lib/use-theme-config';
+import { Button, Text } from '@/components/ui';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -38,9 +39,17 @@ export default function RootLayout() {
 
   return (
     <Providers>
-      <Stack>
-        <Stack.Screen name="signup" options={{ headerShown: false }} />
-        <Stack.Screen name="login" options={{ headerShown: false }} />
+      <Stack
+        screenOptions={{
+          headerShown: true,
+          headerTitle: '',
+          headerShadowVisible: false,
+          headerTransparent: true,
+          headerStyle: { backgroundColor: 'transparent' },
+        }}
+      >
+        <Stack.Screen name="signup"  />
+        <Stack.Screen name="login" />
       </Stack>
     </Providers>
   );

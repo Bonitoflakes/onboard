@@ -7,6 +7,7 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import * as z from 'zod';
 
 import { Button, ControlledInput, Text, View } from '@/components/ui';
+import { Link } from 'expo-router';
 
 const schema = z.object({
   name: z.string().optional(),
@@ -79,6 +80,12 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
           label="Login"
           onPress={handleSubmit(onSubmit)}
         />
+        <Link
+          className="font-medium text-primary"
+          href={{ pathname: '/signup' }}
+        >
+          Signup
+        </Link>
       </View>
     </KeyboardAvoidingView>
   );

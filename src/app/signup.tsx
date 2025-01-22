@@ -55,16 +55,17 @@ export default function Signup() {
     <>
       {/* <FocusAwareStatusBar style="dark" /> */}
       <LinearGradient
-        colors={['#DFE8FF', '#FFFFFF',]}
+        colors={['#DFE8FF', '#FFFFFF']}
         // className="z-[-2]"
         style={{ flex: 1, flexGrow: 1 }}
       >
-        <SafeAreaView className="grow ">
+        <SafeAreaView className="grow">
           <KeyboardAwareScrollView
             bottomOffset={62}
             contentContainerClassName="grow"
           >
-            <View className="grow m-4 z-10">
+            {/* @TOOD: Fix margin hack */}
+            <View className="grow m-4 z-10 mt-14">
               <View className="flex-row gap-2">
                 <Text className="text-[32px] font-bold text-black">
                   Welcome
