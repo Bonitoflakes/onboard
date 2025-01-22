@@ -10,6 +10,7 @@ import * as React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Hashtag } from '@/components/ui/icons/hashtag';
 
 const schema = z.object({
   firstName: z
@@ -56,10 +57,10 @@ export default function Signup() {
           contentContainerClassName="grow"
         >
           <LinearGradient
-            colors={['#DFE8FF', '#FFFFFF', 'red']}
-            className="flex-1 grow"
+            colors={['#DFE8FF', '#FFFFFF']}
+            className="flex-1 grow z-[-2]"
           >
-            <View className="grow m-4">
+            <View className="grow m-4 z-10">
               <View className="flex-row gap-2">
                 <Text className="text-[32px] font-bold text-black">
                   Welcome
@@ -167,6 +168,7 @@ export default function Signup() {
                 </View>
               </View>
             </View>
+            <Hashtag className="absolute bottom-0 right-0" />
           </LinearGradient>
         </KeyboardAwareScrollView>
       </SafeAreaView>
