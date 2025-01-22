@@ -15,16 +15,19 @@ import { Hashtag } from '@/components/ui/icons/hashtag';
 const schema = z.object({
   firstName: z
     .string({ required_error: 'FirstName is required' })
-    .min(1, 'Min. 1 character')
+    .min(3, 'Minimum 3 characters')
     .max(16, 'Maximum 16 characters'),
-  lastName: z.string({ required_error: 'LastName is required' }).min(1).max(8),
+  lastName: z
+    .string({ required_error: 'LastName is required' })
+    .min(3, 'Minimum 3 characters')
+    .max(16, 'Maximum 16 characters'),
   email: z.string().min(1, 'Email is required').email(),
   phone: z
     .string()
-    .min(10, 'Phone number must be 10 digits')
-    .max(10, 'Phone number must be 10 digits')
     .regex(/^\d+$/, 'Phone number must contain only digits')
-    .transform((val) => Number(val)),
+    .min(10, 'Phone number must be 10 digits')
+    .max(10, 'Phone number must be 10 digits'),
+  // .transform((val) => Number(val)),
 });
 
 type TSignup = z.infer<typeof schema>;
@@ -36,10 +39,10 @@ export default function Signup() {
     formState: { errors },
   } = useForm<TSignup>({
     defaultValues: {
-      firstName: 'John ',
+      firstName: 'John',
       lastName: '',
       email: '',
-      phone: 0,
+      phone: '',
     },
     resolver: zodResolver(schema),
   });
